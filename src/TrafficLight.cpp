@@ -82,8 +82,12 @@ void TrafficLight::cycleThroughPhases()
     
     std::chrono::time_point<std::chrono::system_clock> lastUpdate;
     lastUpdate = std::chrono::system_clock::now();
-    int cycleDuration = (rand() % 3 + 4) * 1000;
-    // std::cout << "TrafficLight cycle duration: " << cycleDuration <<std::endl;
+    
+    std::random_device rd;
+    std::mt19937 generator(rd());
+    std::uniform_int_distribution<> distribution(4000, 6000);
+    // int cycleDuration = (rand() % 3 + 4) * 1000;
+    double cycleDuration = distribution(generator);
 
     while(true)
     {
